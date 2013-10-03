@@ -1,4 +1,4 @@
-BichoFelizMVC
+BichoFeliz - Documentação
 =============
 
-Sistema web asp.net mvc 4 para um pet shop.
+https://docs.google.com/document/d/16AU4c2AKcS0pQQis-G7RucfLp368xwKuD0re9zJ84HY/edit
