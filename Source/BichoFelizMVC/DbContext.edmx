@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BichoFelizDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BichoFelizDBModelStoreContainer">
+          <EntitySet Name="ANIMAL" EntityType="BichoFelizDBModel.Store.ANIMAL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONTATO" EntityType="BichoFelizDBModel.Store.CONTATO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOGACESSO" EntityType="BichoFelizDBModel.Store.LOGACESSO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RACA" EntityType="BichoFelizDBModel.Store.RACA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SERVICO" EntityType="BichoFelizDBModel.Store.SERVICO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TIPO" EntityType="BichoFelizDBModel.Store.TIPO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TIPOSERVICO" EntityType="BichoFelizDBModel.Store.TIPOSERVICO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USUARIO" EntityType="BichoFelizDBModel.Store.USUARIO" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ANIMAL_REFERENCE_CONTATO" Association="BichoFelizDBModel.Store.FK_ANIMAL_REFERENCE_CONTATO">
+            <End Role="CONTATO" EntitySet="CONTATO" />
+            <End Role="ANIMAL" EntitySet="ANIMAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANIMAL_REFERENCE_RACA" Association="BichoFelizDBModel.Store.FK_ANIMAL_REFERENCE_RACA">
+            <End Role="RACA" EntitySet="RACA" />
+            <End Role="ANIMAL" EntitySet="ANIMAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGACESS_REFERENCE_USUARIO" Association="BichoFelizDBModel.Store.FK_LOGACESS_REFERENCE_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOGACESSO" EntitySet="LOGACESSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RACA_REFERENCE_TIPO" Association="BichoFelizDBModel.Store.FK_RACA_REFERENCE_TIPO">
+            <End Role="TIPO" EntitySet="TIPO" />
+            <End Role="RACA" EntitySet="RACA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICO_REFERENCE_ANIMAL" Association="BichoFelizDBModel.Store.FK_SERVICO_REFERENCE_ANIMAL">
+            <End Role="ANIMAL" EntitySet="ANIMAL" />
+            <End Role="SERVICO" EntitySet="SERVICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICO_REFERENCE_CONTATO" Association="BichoFelizDBModel.Store.FK_SERVICO_REFERENCE_CONTATO">
+            <End Role="CONTATO" EntitySet="CONTATO" />
+            <End Role="SERVICO" EntitySet="SERVICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICO_REFERENCE_TIPOSERV" Association="BichoFelizDBModel.Store.FK_SERVICO_REFERENCE_TIPOSERV">
+            <End Role="TIPOSERVICO" EntitySet="TIPOSERVICO" />
+            <End Role="SERVICO" EntitySet="SERVICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_REFERENCE_CONTATO" Association="BichoFelizDBModel.Store.FK_USUARIO_REFERENCE_CONTATO">
+            <End Role="CONTATO" EntitySet="CONTATO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ANIMAL">
+          <Key>
+            <PropertyRef Name="IDANIMAL" />
+          </Key>
+          <Property Name="IDANIMAL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDCONTATO" Type="int" />
+          <Property Name="IDRACA" Type="int" />
+          <Property Name="NOME" Type="text" />
+          <Property Name="STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="CONTATO">
+          <Key>
+            <PropertyRef Name="IDCONTATO" />
+          </Key>
+          <Property Name="IDCONTATO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="text" />
+          <Property Name="CPF" Type="text" />
+          <Property Name="ENDERECO" Type="text" />
+          <Property Name="BAIRRO" Type="text" />
+          <Property Name="CIDADE" Type="text" />
+          <Property Name="ESTADO" Type="text" />
+          <Property Name="STATUS" Type="int" />
+          <Property Name="PERFIL" Type="int" />
+        </EntityType>
+        <EntityType Name="LOGACESSO">
+          <Key>
+            <PropertyRef Name="IDTOKEN" />
+          </Key>
+          <Property Name="IDTOKEN" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDUSUARIO" Type="int" />
+          <Property Name="TOKEN" Type="text" />
+          <Property Name="DATAHORA" Type="datetime" />
+          <Property Name="STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="RACA">
+          <Key>
+            <PropertyRef Name="IDRACA" />
+          </Key>
+          <Property Name="IDRACA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDTIPO" Type="int" />
+          <Property Name="NOME" Type="text" />
+          <Property Name="STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="SERVICO">
+          <Key>
+            <PropertyRef Name="IDSERVICO" />
+          </Key>
+          <Property Name="IDSERVICO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDTIPOSERVICO" Type="int" />
+          <Property Name="IDCONTATO" Type="int" />
+          <Property Name="IDANIMAL" Type="int" />
+          <Property Name="DATAHORA" Type="datetime" />
+          <Property Name="PERIODO" Type="int" />
+          <Property Name="SITUACAO" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPO">
+          <Key>
+            <PropertyRef Name="IDTIPO" />
+          </Key>
+          <Property Name="IDTIPO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="text" />
+          <Property Name="STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPOSERVICO">
+          <Key>
+            <PropertyRef Name="IDTIPOSERVICO" />
+          </Key>
+          <Property Name="IDTIPOSERVICO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="text" />
+          <Property Name="STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDCONTATO" Type="int" />
+          <Property Name="EMAIL" Type="text" />
+          <Property Name="SENHA" Type="text" />
+          <Property Name="STATUS" Type="int" />
+        </EntityType>
+        <Association Name="FK_ANIMAL_REFERENCE_CONTATO">
+          <End Role="CONTATO" Type="BichoFelizDBModel.Store.CONTATO" Multiplicity="0..1" />
+          <End Role="ANIMAL" Type="BichoFelizDBModel.Store.ANIMAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTATO">
+              <PropertyRef Name="IDCONTATO" />
+            </Principal>
+            <Dependent Role="ANIMAL">
+              <PropertyRef Name="IDCONTATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ANIMAL_REFERENCE_RACA">
+          <End Role="RACA" Type="BichoFelizDBModel.Store.RACA" Multiplicity="0..1" />
+          <End Role="ANIMAL" Type="BichoFelizDBModel.Store.ANIMAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RACA">
+              <PropertyRef Name="IDRACA" />
+            </Principal>
+            <Dependent Role="ANIMAL">
+              <PropertyRef Name="IDRACA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGACESS_REFERENCE_USUARIO">
+          <End Role="USUARIO" Type="BichoFelizDBModel.Store.USUARIO" Multiplicity="0..1" />
+          <End Role="LOGACESSO" Type="BichoFelizDBModel.Store.LOGACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="LOGACESSO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RACA_REFERENCE_TIPO">
+          <End Role="TIPO" Type="BichoFelizDBModel.Store.TIPO" Multiplicity="0..1" />
+          <End Role="RACA" Type="BichoFelizDBModel.Store.RACA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO">
+              <PropertyRef Name="IDTIPO" />
+            </Principal>
+            <Dependent Role="RACA">
+              <PropertyRef Name="IDTIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICO_REFERENCE_ANIMAL">
+          <End Role="ANIMAL" Type="BichoFelizDBModel.Store.ANIMAL" Multiplicity="0..1" />
+          <End Role="SERVICO" Type="BichoFelizDBModel.Store.SERVICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANIMAL">
+              <PropertyRef Name="IDANIMAL" />
+            </Principal>
+            <Dependent Role="SERVICO">
+              <PropertyRef Name="IDANIMAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICO_REFERENCE_CONTATO">
+          <End Role="CONTATO" Type="BichoFelizDBModel.Store.CONTATO" Multiplicity="0..1" />
+          <End Role="SERVICO" Type="BichoFelizDBModel.Store.SERVICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTATO">
+              <PropertyRef Name="IDCONTATO" />
+            </Principal>
+            <Dependent Role="SERVICO">
+              <PropertyRef Name="IDCONTATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICO_REFERENCE_TIPOSERV">
+          <End Role="TIPOSERVICO" Type="BichoFelizDBModel.Store.TIPOSERVICO" Multiplicity="0..1" />
+          <End Role="SERVICO" Type="BichoFelizDBModel.Store.SERVICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOSERVICO">
+              <PropertyRef Name="IDTIPOSERVICO" />
+            </Principal>
+            <Dependent Role="SERVICO">
+              <PropertyRef Name="IDTIPOSERVICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_REFERENCE_CONTATO">
+          <End Role="CONTATO" Type="BichoFelizDBModel.Store.CONTATO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="BichoFelizDBModel.Store.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTATO">
+              <PropertyRef Name="IDCONTATO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="IDCONTATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BichoFelizDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BichoFelizDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ANIMALs" EntityType="BichoFelizDBModel.ANIMAL" />
+          <EntitySet Name="CONTATOes" EntityType="BichoFelizDBModel.CONTATO" />
+          <EntitySet Name="LOGACESSOes" EntityType="BichoFelizDBModel.LOGACESSO" />
+          <EntitySet Name="RACAs" EntityType="BichoFelizDBModel.RACA" />
+          <EntitySet Name="TIPOes" EntityType="BichoFelizDBModel.TIPO" />
+          <EntitySet Name="TIPOSERVICOes" EntityType="BichoFelizDBModel.TIPOSERVICO" />
+          <EntitySet Name="USUARIOs" EntityType="BichoFelizDBModel.USUARIO" />
+          <AssociationSet Name="FK_ANIMAL_REFERENCE_CONTATO" Association="BichoFelizDBModel.FK_ANIMAL_REFERENCE_CONTATO">
+            <End Role="CONTATO" EntitySet="CONTATOes" />
+            <End Role="ANIMAL" EntitySet="ANIMALs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ANIMAL_REFERENCE_RACA" Association="BichoFelizDBModel.FK_ANIMAL_REFERENCE_RACA">
+            <End Role="RACA" EntitySet="RACAs" />
+            <End Role="ANIMAL" EntitySet="ANIMALs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_REFERENCE_CONTATO" Association="BichoFelizDBModel.FK_USUARIO_REFERENCE_CONTATO">
+            <End Role="CONTATO" EntitySet="CONTATOes" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGACESS_REFERENCE_USUARIO" Association="BichoFelizDBModel.FK_LOGACESS_REFERENCE_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="LOGACESSO" EntitySet="LOGACESSOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RACA_REFERENCE_TIPO" Association="BichoFelizDBModel.FK_RACA_REFERENCE_TIPO">
+            <End Role="TIPO" EntitySet="TIPOes" />
+            <End Role="RACA" EntitySet="RACAs" />
+          </AssociationSet>
+          <EntitySet Name="SERVICOes" EntityType="BichoFelizDBModel.SERVICO" />
+          <AssociationSet Name="FK_SERVICO_REFERENCE_ANIMAL" Association="BichoFelizDBModel.FK_SERVICO_REFERENCE_ANIMAL">
+            <End Role="ANIMAL" EntitySet="ANIMALs" />
+            <End Role="SERVICO" EntitySet="SERVICOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICO_REFERENCE_CONTATO" Association="BichoFelizDBModel.FK_SERVICO_REFERENCE_CONTATO">
+            <End Role="CONTATO" EntitySet="CONTATOes" />
+            <End Role="SERVICO" EntitySet="SERVICOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICO_REFERENCE_TIPOSERV" Association="BichoFelizDBModel.FK_SERVICO_REFERENCE_TIPOSERV">
+            <End Role="TIPOSERVICO" EntitySet="TIPOSERVICOes" />
+            <End Role="SERVICO" EntitySet="SERVICOes" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ANIMAL">
+          <Key>
+            <PropertyRef Name="IDANIMAL" />
+          </Key>
+          <Property Name="IDANIMAL" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCONTATO" Type="Int32" />
+          <Property Name="IDRACA" Type="Int32" />
+          <Property Name="NOME" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CONTATO" Relationship="BichoFelizDBModel.FK_ANIMAL_REFERENCE_CONTATO" FromRole="ANIMAL" ToRole="CONTATO" />
+          <NavigationProperty Name="RACA" Relationship="BichoFelizDBModel.FK_ANIMAL_REFERENCE_RACA" FromRole="ANIMAL" ToRole="RACA" />
+          <Property Type="Int32" Name="STATUS" />
+          <NavigationProperty Name="SERVICOes" Relationship="BichoFelizDBModel.FK_SERVICO_REFERENCE_ANIMAL" FromRole="ANIMAL" ToRole="SERVICO" />
+        </EntityType>
+        <EntityType Name="CONTATO">
+          <Key>
+            <PropertyRef Name="IDCONTATO" />
+          </Key>
+          <Property Name="IDCONTATO" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CPF" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ENDERECO" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="BAIRRO" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CIDADE" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="STATUS" Type="Int32" />
+          <Property Name="PERFIL" Type="Int32" />
+          <NavigationProperty Name="ANIMALs" Relationship="BichoFelizDBModel.FK_ANIMAL_REFERENCE_CONTATO" FromRole="CONTATO" ToRole="ANIMAL" />
+          <NavigationProperty Name="USUARIOs" Relationship="BichoFelizDBModel.FK_USUARIO_REFERENCE_CONTATO" FromRole="CONTATO" ToRole="USUARIO" />
+          <NavigationProperty Name="SERVICOes" Relationship="BichoFelizDBModel.FK_SERVICO_REFERENCE_CONTATO" FromRole="CONTATO" ToRole="SERVICO" />
+        </EntityType>
+        <EntityType Name="LOGACESSO">
+          <Key>
+            <PropertyRef Name="IDTOKEN" />
+          </Key>
+          <Property Name="IDTOKEN" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUSUARIO" Type="Int32" />
+          <Property Name="TOKEN" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="DATAHORA" Type="DateTime" Precision="3" />
+          <Property Name="STATUS" Type="Int32" />
+          <NavigationProperty Name="USUARIO" Relationship="BichoFelizDBModel.FK_LOGACESS_REFERENCE_USUARIO" FromRole="LOGACESSO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="RACA">
+          <Key>
+            <PropertyRef Name="IDRACA" />
+          </Key>
+          <Property Name="IDRACA" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDTIPO" Type="Int32" />
+          <Property Name="NOME" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ANIMALs" Relationship="BichoFelizDBModel.FK_ANIMAL_REFERENCE_RACA" FromRole="RACA" ToRole="ANIMAL" />
+          <NavigationProperty Name="TIPO" Relationship="BichoFelizDBModel.FK_RACA_REFERENCE_TIPO" FromRole="RACA" ToRole="TIPO" />
+          <Property Type="Int32" Name="STATUS" />
+        </EntityType>
+        <EntityType Name="TIPO">
+          <Key>
+            <PropertyRef Name="IDTIPO" />
+          </Key>
+          <Property Name="IDTIPO" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="RACAs" Relationship="BichoFelizDBModel.FK_RACA_REFERENCE_TIPO" FromRole="TIPO" ToRole="RACA" />
+          <Property Type="Int32" Name="STATUS" />
+        </EntityType>
+        <EntityType Name="TIPOSERVICO">
+          <Key>
+            <PropertyRef Name="IDTIPOSERVICO" />
+          </Key>
+          <Property Name="IDTIPOSERVICO" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="STATUS" />
+          <NavigationProperty Name="SERVICOes" Relationship="BichoFelizDBModel.FK_SERVICO_REFERENCE_TIPOSERV" FromRole="TIPOSERVICO" ToRole="SERVICO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCONTATO" Type="Int32" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="SENHA" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CONTATO" Relationship="BichoFelizDBModel.FK_USUARIO_REFERENCE_CONTATO" FromRole="USUARIO" ToRole="CONTATO" />
+          <NavigationProperty Name="LOGACESSOes" Relationship="BichoFelizDBModel.FK_LOGACESS_REFERENCE_USUARIO" FromRole="USUARIO" ToRole="LOGACESSO" />
+          <Property Type="Int32" Name="STATUS" />
+        </EntityType>
+        <Association Name="FK_ANIMAL_REFERENCE_CONTATO">
+          <End Role="CONTATO" Type="BichoFelizDBModel.CONTATO" Multiplicity="0..1" />
+          <End Role="ANIMAL" Type="BichoFelizDBModel.ANIMAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTATO">
+              <PropertyRef Name="IDCONTATO" />
+            </Principal>
+            <Dependent Role="ANIMAL">
+              <PropertyRef Name="IDCONTATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ANIMAL_REFERENCE_RACA">
+          <End Role="RACA" Type="BichoFelizDBModel.RACA" Multiplicity="0..1" />
+          <End Role="ANIMAL" Type="BichoFelizDBModel.ANIMAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RACA">
+              <PropertyRef Name="IDRACA" />
+            </Principal>
+            <Dependent Role="ANIMAL">
+              <PropertyRef Name="IDRACA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_REFERENCE_CONTATO">
+          <End Role="CONTATO" Type="BichoFelizDBModel.CONTATO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="BichoFelizDBModel.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTATO">
+              <PropertyRef Name="IDCONTATO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="IDCONTATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGACESS_REFERENCE_USUARIO">
+          <End Role="USUARIO" Type="BichoFelizDBModel.USUARIO" Multiplicity="0..1" />
+          <End Role="LOGACESSO" Type="BichoFelizDBModel.LOGACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="LOGACESSO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RACA_REFERENCE_TIPO">
+          <End Role="TIPO" Type="BichoFelizDBModel.TIPO" Multiplicity="0..1" />
+          <End Role="RACA" Type="BichoFelizDBModel.RACA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO">
+              <PropertyRef Name="IDTIPO" />
+            </Principal>
+            <Dependent Role="RACA">
+              <PropertyRef Name="IDTIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SERVICO">
+          <Key>
+            <PropertyRef Name="IDSERVICO" />
+          </Key>
+          <Property Type="Int32" Name="IDSERVICO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDTIPOSERVICO" />
+          <Property Type="Int32" Name="IDCONTATO" />
+          <Property Type="Int32" Name="IDANIMAL" />
+          <Property Type="DateTime" Name="DATAHORA" Precision="3" />
+          <Property Type="Int32" Name="PERIODO" />
+          <Property Type="Int32" Name="SITUACAO" />
+          <NavigationProperty Name="ANIMAL" Relationship="BichoFelizDBModel.FK_SERVICO_REFERENCE_ANIMAL" FromRole="SERVICO" ToRole="ANIMAL" />
+          <NavigationProperty Name="CONTATO" Relationship="BichoFelizDBModel.FK_SERVICO_REFERENCE_CONTATO" FromRole="SERVICO" ToRole="CONTATO" />
+          <NavigationProperty Name="TIPOSERVICO" Relationship="BichoFelizDBModel.FK_SERVICO_REFERENCE_TIPOSERV" FromRole="SERVICO" ToRole="TIPOSERVICO" />
+        </EntityType>
+        <Association Name="FK_SERVICO_REFERENCE_ANIMAL">
+          <End Type="BichoFelizDBModel.ANIMAL" Role="ANIMAL" Multiplicity="0..1" />
+          <End Type="BichoFelizDBModel.SERVICO" Role="SERVICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANIMAL">
+              <PropertyRef Name="IDANIMAL" />
+            </Principal>
+            <Dependent Role="SERVICO">
+              <PropertyRef Name="IDANIMAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICO_REFERENCE_CONTATO">
+          <End Type="BichoFelizDBModel.CONTATO" Role="CONTATO" Multiplicity="0..1" />
+          <End Type="BichoFelizDBModel.SERVICO" Role="SERVICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTATO">
+              <PropertyRef Name="IDCONTATO" />
+            </Principal>
+            <Dependent Role="SERVICO">
+              <PropertyRef Name="IDCONTATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICO_REFERENCE_TIPOSERV">
+          <End Type="BichoFelizDBModel.TIPOSERVICO" Role="TIPOSERVICO" Multiplicity="0..1" />
+          <End Type="BichoFelizDBModel.SERVICO" Role="SERVICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOSERVICO">
+              <PropertyRef Name="IDTIPOSERVICO" />
+            </Principal>
+            <Dependent Role="SERVICO">
+              <PropertyRef Name="IDTIPOSERVICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BichoFelizDBModelStoreContainer" CdmEntityContainer="BichoFelizDBEntities">
+          <EntitySetMapping Name="ANIMALs">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.ANIMAL">
+              <MappingFragment StoreEntitySet="ANIMAL">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="IDANIMAL" ColumnName="IDANIMAL" />
+                <ScalarProperty Name="IDCONTATO" ColumnName="IDCONTATO" />
+                <ScalarProperty Name="IDRACA" ColumnName="IDRACA" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTATOes">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.CONTATO">
+              <MappingFragment StoreEntitySet="CONTATO">
+                <ScalarProperty Name="IDCONTATO" ColumnName="IDCONTATO" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="ENDERECO" ColumnName="ENDERECO" />
+                <ScalarProperty Name="BAIRRO" ColumnName="BAIRRO" />
+                <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PERFIL" ColumnName="PERFIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGACESSOes">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.LOGACESSO">
+              <MappingFragment StoreEntitySet="LOGACESSO">
+                <ScalarProperty Name="IDTOKEN" ColumnName="IDTOKEN" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="TOKEN" ColumnName="TOKEN" />
+                <ScalarProperty Name="DATAHORA" ColumnName="DATAHORA" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RACAs">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.RACA">
+              <MappingFragment StoreEntitySet="RACA">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="IDRACA" ColumnName="IDRACA" />
+                <ScalarProperty Name="IDTIPO" ColumnName="IDTIPO" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOes">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.TIPO">
+              <MappingFragment StoreEntitySet="TIPO">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="IDTIPO" ColumnName="IDTIPO" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOSERVICOes">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.TIPOSERVICO">
+              <MappingFragment StoreEntitySet="TIPOSERVICO">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="IDTIPOSERVICO" ColumnName="IDTIPOSERVICO" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOs">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="IDCONTATO" ColumnName="IDCONTATO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICOes">
+            <EntityTypeMapping TypeName="BichoFelizDBModel.SERVICO">
+              <MappingFragment StoreEntitySet="SERVICO">
+                <ScalarProperty Name="SITUACAO" ColumnName="SITUACAO" />
+                <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+                <ScalarProperty Name="DATAHORA" ColumnName="DATAHORA" />
+                <ScalarProperty Name="IDANIMAL" ColumnName="IDANIMAL" />
+                <ScalarProperty Name="IDCONTATO" ColumnName="IDCONTATO" />
+                <ScalarProperty Name="IDTIPOSERVICO" ColumnName="IDTIPOSERVICO" />
+                <ScalarProperty Name="IDSERVICO" ColumnName="IDSERVICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

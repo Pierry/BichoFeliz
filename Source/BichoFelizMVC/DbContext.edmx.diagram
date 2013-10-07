@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5d30c7dc197c48568f656f2f1febe38b" Name="Diagram1">
+        <EntityTypeShape EntityType="BichoFelizDBModel.ANIMAL" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BichoFelizDBModel.CONTATO" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BichoFelizDBModel.LOGACESSO" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BichoFelizDBModel.RACA" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BichoFelizDBModel.TIPO" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BichoFelizDBModel.TIPOSERVICO" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BichoFelizDBModel.USUARIO" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_ANIMAL_REFERENCE_CONTATO" ManuallyRouted="false" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_ANIMAL_REFERENCE_RACA" ManuallyRouted="false" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_USUARIO_REFERENCE_CONTATO" ManuallyRouted="false" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_LOGACESS_REFERENCE_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_RACA_REFERENCE_TIPO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BichoFelizDBModel.SERVICO" Width="1.5" PointX="5.7602696371079745" PointY="15.104806236505883" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_SERVICO_REFERENCE_ANIMAL" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_SERVICO_REFERENCE_CONTATO" />
+        <AssociationConnector Association="BichoFelizDBModel.FK_SERVICO_REFERENCE_TIPOSERV" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

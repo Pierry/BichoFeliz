@@ -9,5 +9,13 @@ namespace BichoFelizMVC.Controllers {
     public ActionResult Index() {
       return View();
     }
+
+    public ActionResult Registrar() {
+      return View();
+    }
+
+    public ActionResult RecuperarSenha() {
+      return View();
+    }
   }
 }
