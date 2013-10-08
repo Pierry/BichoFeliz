@@ -1,17 +1,104 @@
-﻿@model dynamic
+﻿@model BichoFelizMVC.Models.UsuarioModels
 
 @{
-    ViewBag.Title = "title";
-    Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
+  ViewBag.Title = "Registar-se";
+  Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+
 }
-<div class="container">
-  <form class="form-signin">
-    <h2 class="form-signin-heading">Iniciar sistema</h2>
-    <input type="text" class="form-control" placeholder="Email" autofocus />
-    <input type="password" class="form-control" placeholder="password"/>    
-    <input type="password" class="form-control" placeholder="password"/>    
-    <br/>
-    <button class="btn btn-lg btn-primary" type="submit">Salvar</button>
-    <button class="btn btn-lg btn-default" type="reset">Cancelar</button>
-  </form>
-</div>
+<h2 class="panel panel-body text-info">Novo usuário</h2>
+@using (Html.BeginForm("Registrar","Home")) {
+  @Html.ValidationSummary(true)
+  <div class="panel panel-body">
+    <table class="table-condensed">
+      <tbody>
+        <tr>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Contato.Nome)</span>
+              @Html.TextBoxFor(m => m.Contato.Nome, null, new { @class = "form-control input-lg", placeholder = "Nome completo", data_bind = "value: Nome"})
+              @Html.ValidationMessageFor(m => m.Contato.Nome)
+            </div>
+          </td>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Contato.Cpf)</span>
+              @Html.TextBoxFor(m => m.Contato.Cpf, null, new { @class = "form-control input-lg", placeholder = "000.000.000-00", data_bind = "value: Cpf" })
+              @Html.ValidationMessageFor(m => m.Contato.Cpf)
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Contato.Endereco)</span>
+              @Html.TextBoxFor(m => m.Contato.Endereco, null, new { @class = "form-control input-lg", data_bind="value: Endereco"})
+              @Html.ValidationMessageFor(m => m.Contato.Endereco)
+            </div>
+          </td>
+          <td>
+            <div class="input-group input-group-lg">             
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Contato.Bairro)</span>
+              @Html.TextBoxFor(m => m.Contato.Bairro, null, new { @class = "form-control input-lg", data_bind = "value: Bairro" })
+              @Html.ValidationMessageFor(m => m.Contato.Bairro)
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Contato.Cidade)</span>
+              @Html.TextBoxFor(m => m.Contato.Cidade, null, new { @class = "form-control input-lg", placeholder = "Nome completo", data_bind = "value: Cidade" })
+              @Html.ValidationMessageFor(m => m.Contato.Cidade)
+            </div>
+          </td>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Contato.Estado)</span>
+              @Html.TextBoxFor(m => m.Contato.Estado, null, new { @class = "form-control input-lg", data_bind = "Estado" })
+              @Html.ValidationMessageFor(m => m.Contato.Estado)
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <table class="table-condensed pull-left">
+      <tbody>
+        <tr>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Email)</span>
+              @Html.TextBoxFor(m => m.Email, null, new { @class = "form-control input-lg", data_bind = "value: Email" })
+              @Html.ValidationMessageFor(m => m.Email)
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.Senha)</span>
+              @Html.TextBoxFor(m => m.Senha, null, new { @class = "form-control input-lg", data_bind = "value: Senha" })
+              @Html.ValidationMessageFor(m => m.Senha)
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">@Html.DisplayNameFor(m => m.ConfirmarSenha)</span>
+              @Html.TextBoxFor(m => m.ConfirmarSenha, null, new { @class = "form-control input-lg" })
+              @Html.ValidationMessageFor(m => m.ConfirmarSenha)
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <br />
+            <button class="btn btn-lg btn-primary" type="button">Salvar</button>
+            <button class="btn btn-lg btn-default" type="reset">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
+}           

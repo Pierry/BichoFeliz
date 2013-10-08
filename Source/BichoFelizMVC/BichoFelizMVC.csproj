@@ -372,6 +372,7 @@
     <Content Include="Scripts\knockout-2.3.0.debug.js" />
     <Content Include="Scripts\knockout-2.3.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="ViewModel\UsuarioViewModel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -415,9 +416,12 @@
     <Content Include="Views\ExampleLayouts\Narrow.cshtml" />
     <Content Include="Views\ExampleLayouts\Marketing.cshtml" />
     <Content Include="Views\ExampleLayouts\Fluid.cshtml" />
+    <Content Include="Views\Home\Registrar.cshtml" />
+    <Content Include="Views\Home\RecuperarSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,6 +1,3 @@
-@using System.Web.Optimization
-@using BootstrapSupport
-@using NavigationRoutes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +10,9 @@
   @Html.Partial("_html5shiv")
   @* favicons and touch icons go here *@
 </head>
-<body>
-  @RenderBody()
+<body class="container">
+  @RenderBody()              
+
   @Scripts.Render("~/bundles/bootstrap")
   @RenderSection("Scripts", required: false)
 </body>

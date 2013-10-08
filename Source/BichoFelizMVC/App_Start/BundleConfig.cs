@@ -21,12 +21,15 @@ namespace BichoFelizMVC {
                   "~/Scripts/modernizr-*"));
 
       bundles.Add(new StyleBundle("~/Content/css").Include(
-        "~/Content/site.css",
         "~/Content/bootstrap/bootstrap.css",
         "~/Content/bootstrap/bootstrap-theme.css",
-        "~/Content/body.css",
         "~/Content/bootstrap/signin.css",
         "~/Content/bootstrap-responsive.css",
+        "~/Content/body.css"
+        ));
+
+      bundles.Add(new StyleBundle("~/Content/bootcss").Include(
+        "~/Content/site.css",
         "~/Content/bootstrap-mvc-validation.css"
         ));
 
@@ -34,6 +37,9 @@ namespace BichoFelizMVC {
         "~/Scripts/jquery-{version}.js",
         "~/Scripts/jquery-migrate-{version}.js",
         "~/Scripts/bootstrap.js",
+        "~/ViewModel/UsuarioViewModel.js",
+        "~/Scripts/knockout-2.3.0.debug.js",
+        "~/Scripts/knockout-2.3.0.js",
         "~/Scripts/jquery.validate.js",
         "~/scripts/jquery.validate.unobtrusive.js",
         "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"

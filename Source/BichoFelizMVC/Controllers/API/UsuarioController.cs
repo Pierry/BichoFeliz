@@ -10,17 +10,17 @@ using BichoFelizMVC.Repository.Persistence;
 namespace BichoFelizMVC.Controllers.API {
   public class UsuarioController : ApiController {
 
-    private UsuarioRepository usuarioRepository = new UsuarioRepository();
+    private readonly UsuarioRepository _usuarioRepository = new UsuarioRepository();
 
     // GET api/usuario
     [Queryable]
     public IEnumerable<UsuarioModels> Get() {
-      return usuarioRepository.Get();
+      return _usuarioRepository.Get();
     }
 
     // GET api/usuario/5
     public UsuarioModels Get(int id) {
-      return usuarioRepository.Get(id);
+      return _usuarioRepository.Get(id);
     }
 
     // POST api/usuario
@@ -28,7 +28,7 @@ namespace BichoFelizMVC.Controllers.API {
       if (!ModelState.IsValid) {
         return Request.CreateResponse(HttpStatusCode.BadRequest);
       }
-      usuarioRepository.Add(usuarioModels);
+      _usuarioRepository.Add(usuarioModels);
 
       var response = Request.CreateResponse(HttpStatusCode.Created, usuarioModels);
 
@@ -46,7 +46,7 @@ namespace BichoFelizMVC.Controllers.API {
       if (id != usuarioModels.IdUsuario) {
         return Request.CreateResponse(HttpStatusCode.BadRequest);
       }
-      if (usuarioRepository.Update(usuarioModels)) {
+      if (_usuarioRepository.Update(usuarioModels)) {
         return Request.CreateResponse(HttpStatusCode.OK);
       }
       return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -54,7 +54,7 @@ namespace BichoFelizMVC.Controllers.API {
 
     // DELETE api/usuario/5
     public HttpResponseMessage Delete(int id) {
-      if (!usuarioRepository.Delete(id)) {
+      if (!_usuarioRepository.Delete(id)) {
         return Request.CreateResponse(HttpStatusCode.NotFound);
       }
       return Request.CreateResponse(HttpStatusCode.OK);
