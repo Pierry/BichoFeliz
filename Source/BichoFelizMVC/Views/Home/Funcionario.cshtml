@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Funcionario";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+
+<div class="container">
+    <h2 class="h2">Adicionar funcionario
+        <button class="btn btn-lg btn-default pull-right">Adicionar animal</button>
+    </h2>
+    <hr />
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="input-group">
+                <input type="text" placeholder="Nome" class="input-lg" />&nbsp;
+                <input type="text" placeholder="CPF" class="input-lg" />
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Endereço" class="input-lg" />&nbsp;
+                <input type="text" placeholder="Bairro" class="input-lg" />
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Cidade" class="input-lg" />&nbsp;
+                <input type="text" placeholder="Estádo" class="input-lg" />
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Email" class="input-lg" />&nbsp;
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Senha" class="input-lg" />&nbsp;
+                <input type="text" placeholder="Confirmar Senha" class="input-lg" />&nbsp;
+            </div>
+            <br />
+            <br />
+            <button class="btn btn-lg btn-primary">Salvar</button>
+            <button class="btn btn-lg btn-default">Cancelar</button>
+        </fieldset>
+    </form>
+    <h2>Animais cadastrados
+        <button class="btn btn-lg btn-default pull-right">OK</button>
+        <input type="text" class="input-lg pull-right" placeholder="Pesquisar">
+    </h2>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Cliente</td>
+                <td class="text-info">Estado</td>
+                <td class="text-info">Cidade</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cliente 01</td>
+                <td>SC </td>
+                <td>Florianopolis</td>
+                <td>
+                    <button class="btn btn-default">Alterar</button>&nbsp;
+                    <button class="btn btn-danger">Desativar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

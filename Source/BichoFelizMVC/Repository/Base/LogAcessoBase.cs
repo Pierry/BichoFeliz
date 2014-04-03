@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using BichoFelizMVC.Controllers.Repository.Interfaces;
 using BichoFelizMVC.Models;
 
-namespace BichoFelizMVC.Repository.Base
+namespace BichoFelizMVC.Controllers.Repository.Base
 {
     public abstract class LogAcessoBase : ICrud<LogAcessoModels>
     {
@@ -9,9 +10,9 @@ namespace BichoFelizMVC.Repository.Base
 
         public abstract IEnumerable<LogAcessoModels> Get();
         public abstract LogAcessoModels Get(int id);
-        public abstract bool Add(LogAcessoModels item);
+        public abstract LogAcessoModels Add(LogAcessoModels item);
         public abstract bool Update(LogAcessoModels item);
-        public abstract bool Delete(int id);
+        public abstract bool Remove(int id);
 
         #endregion
     }

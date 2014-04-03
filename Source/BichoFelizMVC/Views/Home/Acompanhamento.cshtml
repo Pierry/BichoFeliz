@@ -1,0 +1,40 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Acompanhamento";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+
+<div class="container">
+    <h3>
+        Acompanhamento
+        <button class="btn btn-lg btn-primary pull-right">OK</button>
+        <input type="text" class="input-lg form-signin pull-right" placeholder="Data">
+    </h3>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Cliente</td>
+                <td class="text-info">Animal</td>
+                <td class="text-info">Serviço</td>
+                <td class="text-info">Situação</td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: servicos">
+            <tr>
+                <td data-bind="text: NomeContato"></td>
+                <td data-bind="text: Animal"></td>
+                <td data-bind="text: Tipo"></td>
+                <td data-bind="text: Status"></td>
+                <td>
+                    <button class="btn btn-success" data-bind="click: $root.edit">Alterar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section ServicoScript {
+    @Scripts.Render("~/servicoViewModel")
+}

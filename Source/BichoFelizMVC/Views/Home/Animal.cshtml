@@ -1,0 +1,59 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Animais";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+<div class="container">
+    <h2 class="h2">Adicionar animal</h2>
+    <hr />
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="input-group">
+                <input type="text" placeholder="Cliente" class="input-lg" />&nbsp;
+            <input type="text" placeholder="CPF" class="input-lg" />
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Nome animal" class="input-lg" />&nbsp;
+            <input type="text" placeholder="Tipo" class="input-lg" />
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Raça" class="input-lg" />&nbsp;
+            <input type="text" placeholder="Sexo" class="input-lg" />
+            </div>
+            <br />
+            <br />
+            <button class="btn btn-lg btn-primary">Salvar</button>
+            <button class="btn btn-lg btn-default">Cancelar</button>
+        </fieldset>
+    </form>
+    <br />
+    <br />
+    <h2>Animais cadastrados
+        <button class="btn btn-lg btn-default pull-right">OK</button>
+        <input type="text" class="input-lg pull-right" placeholder="Pesquisar">
+    </h2>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Nome</td>
+                <td class="text-info">Espécie</td>
+                <td class="text-info">Cliente</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>João da Silva</td>
+                <td>Cão</td>
+                <td>Cliente 01</td>
+                <td>
+                    <button class="btn btn-default">Alterar</button>&nbsp;
+                    <button class="btn btn-danger">Desativar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

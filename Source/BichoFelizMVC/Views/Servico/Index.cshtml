@@ -1,0 +1,83 @@
+﻿@model BichoFelizMVC.Models.ServicoModels
+
+@{
+    ViewBag.Title = "Serviços";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+<input type="hidden" name="idcontato" id="idcontato" value="@TempData["idcontato"]">
+<input type="hidden" name="idempresa" id="idempresa" value="@TempData["idempresa"]">
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset class="form-signin">
+            <h3>Adicionar serviço </h3>
+            <hr />
+            <div class="input-group">
+                <div class="input-group">
+                    <label class="text-info">Cliente</label>&nbsp;
+                    <select data-bind="options: clientes, optionsText: 'NomeContato', value: $root.cli, optionsValue: 'IdContato'" class="btn btn-default dropdown-toggle"></select>
+                    <input type="hidden" data-bind="text: cli" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="text-info">Animal</label>&nbsp;
+                    <select data-bind="options: animais, optionsText: 'Nome', value: $root.anim, optionsValue: 'IdAnimal'" class="btn btn-default dropdown-toggle"></select>
+                    <input type="hidden" data-bind="text: anim" />
+                </div>
+                <br/>
+                <div class="input-group">
+                    <label class="text-info">Período</label>&nbsp;
+                    <select data-bind="options: periodos, value: $root.perio" class="btn btn-default dropdown-toggle"></select>
+                    <input type="hidden" data-bind="text: perio" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="text-info">Tipo de serviço</label>&nbsp;
+                    <select data-bind="options: tipos, optionsText: 'Nome', value: $root.tiposerv, optionValue: 'IdTpServico'" class="btn btn-default dropdown-toggle"></select>
+                    <input type="hidden" data-bind="text: tiposerv" />
+                </div>
+                <br />
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.DataHora, new { @class = "form-signin", data_bind = "value: $root.Data", placeholder = "Data" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.DataHora, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg" data-bind="click: $root.add">Salvar</button>
+                <button class="btn btn-default btn-lg" data-bind="click: $root.cancel">Cancelar</button>
+            </div>
+        </fieldset>
+    }
+</div>
+<br />
+<br />
+<div class="container">
+    <h3>
+        Serviços cadastrados
+        <button class="btn btn-lg btn-primary pull-right">OK</button>
+        <input type="text" class="input-lg form-signin pull-right" placeholder="Pesquisar">
+    </h3>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Cliente</td>
+                <td class="text-info">Animal</td>
+                <td class="text-info">Data</td>
+                <td class="text-info">Período</td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: servicos">
+            <tr>
+                <td data-bind="text: NomeContato"></td>
+                <td data-bind="text: Animal"></td>
+                <td data-bind="text: DataHora"></td>
+                <td data-bind="text: Periodo"></td>
+                <td>
+                    <button class="btn btn-success" data-bind="click: $root.edit">Alterar</button>&nbsp;
+                    <button class="btn btn-danger" data-bind="click: $root.remove">Desativar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section ServicoScript {
+    @Scripts.Render("~/servicoViewModel")
+}

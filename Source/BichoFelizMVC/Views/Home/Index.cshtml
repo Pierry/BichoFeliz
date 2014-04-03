@@ -1,20 +1,32 @@
-﻿@model dynamic
+﻿@model BichoFelizMVC.Models.UsuarioModels
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Bicho Feliz - Logon";
     Layout = "~/Views/shared/_BootstrapLayout.empty.cshtml";
 }
 
-  <form class="form-signin">
-    <h2 class="form-signin-heading">Iniciar sistema</h2>
-    <input type="text" class="form-control" placeholder="Email" autofocus />
-    <input type="password" class="form-control" placeholder="password"/>    
-    <br/>
-    <button class="btn btn-lg btn-primary" type="submit">Login</button>
-    <button class="btn btn-lg btn-default" type="reset">Cancelar</button>
-    <hr/>
-    <br/>
-    @Html.ActionLink("Registrar", "Registrar", "Home", new { @class = "btn btn-link" })
-    <br/>
-    <button class="btn btn-link" type="button">Recuperar senha</button>
-  </form>
+<div class="container">
+    @using (Html.BeginForm("Index", "Home"))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset class="form-signin">
+            <h2 class="form-signin-heading">Possui conta?</h2><br/>
+            <div class="input-group">
+                @Html.ValidationMessageFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-signin", placeholder = "Email" })
+                <br />
+            </div>
+            <div class="input-group">
+                @Html.ValidationMessageFor(m => m.Senha)
+                @Html.PasswordFor(m => m.Senha, new { @class = "form-signin", placeholder = "Senha" })
+                <br />
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
+                <button type="reset" class="btn btn-default btn-lg">Cancelar</button>
+                <br/><br/>
+            </div>
+            <br />
+        </fieldset>
+    }
+</div>

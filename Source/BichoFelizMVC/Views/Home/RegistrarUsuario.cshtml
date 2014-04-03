@@ -1,0 +1,76 @@
+﻿@model BichoFelizMVC.Models.RegistrarUsuarioViewModel
+
+@{
+    ViewBag.Title = "Registrar usuário";
+    Layout = "~/Views/Shared/_BootstrapLayout.empty.cshtml";
+}
+<div class="container">
+    @using (Html.BeginForm("RegistrarUsuario","Home"))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset class="form-signin">
+            <h2 class="h2">Registrar Usuário</h2>
+            <div class="text-info">Nome</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarContatoModel.Nome)
+                @Html.ValidationMessageFor(m => m.RegistrarContatoModel.Nome)
+                @Html.TextBoxFor(m => m.RegistrarContatoModel.Nome, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div class="text-info">CPF</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarContatoModel.Cpf)
+                @Html.ValidationMessageFor(m => m.RegistrarContatoModel.Cpf)
+                @Html.TextBoxFor(m => m.RegistrarContatoModel.Cpf, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div class="text-info">Endereço</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarContatoModel.Endereco)
+                @Html.ValidationMessageFor(m => m.RegistrarContatoModel.Endereco)
+                @Html.TextBoxFor(m => m.RegistrarContatoModel.Endereco, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div class="text-info">Bairro</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarContatoModel.Bairro)
+                @Html.ValidationMessageFor(m => m.RegistrarContatoModel.Bairro)
+                @Html.TextBoxFor(m => m.RegistrarContatoModel.Bairro, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div class="text-info">Cidade</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarContatoModel.Cidade)
+                @Html.ValidationMessageFor(m => m.RegistrarContatoModel.Cidade)
+                @Html.TextBoxFor(m => m.RegistrarContatoModel.Cidade, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div class="text-info">Estado</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarContatoModel.Estado)
+                @Html.ValidationMessageFor(m => m.RegistrarContatoModel.Estado)
+                @Html.TextBoxFor(m => m.RegistrarContatoModel.Estado, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div class="text-info">Email</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarUsuarioModel.Email)
+                @Html.ValidationMessageFor(m => m.RegistrarUsuarioModel.Email)
+                @Html.TextBoxFor(m => m.RegistrarUsuarioModel.Email, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div class="text-info">Senha</div>
+            <div class="input-group">
+                @Html.DisplayFor(m => m.RegistrarUsuarioModel.Senha)
+                @Html.ValidationMessageFor(m => m.RegistrarUsuarioModel.Senha)
+                @Html.PasswordFor(m => m.RegistrarUsuarioModel.Senha, new { @class = "input-sm" })
+                <br/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                <button type="reset" class="btn btn-default btn-lg">Cancelar</button>
+            </div>
+            <br />
+        </fieldset>
+    }
+</div>

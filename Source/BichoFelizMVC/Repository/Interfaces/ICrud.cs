@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using BichoFelizMVC.Models;
 
-namespace BichoFelizMVC.Repository
+namespace BichoFelizMVC.Controllers.Repository.Interfaces
 {
     public interface ICrud<T>
     {
@@ -8,11 +9,10 @@ namespace BichoFelizMVC.Repository
 
         T Get(int id);
 
-        bool Add(T item);
+        T Add(T item);
 
         bool Update(T item);
 
-        bool Delete(int id);
-
+        bool Remove(int id);
     }
 }

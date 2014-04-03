@@ -1,0 +1,67 @@
+﻿@model BichoFelizMVC.Models.EmpresaModels
+
+@{
+    ViewBag.Title = "Registrar empresa";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+    <fieldset class="form-signin">
+        <h3>Registrar Empresa</h3>
+        <hr />
+        <label data-bind="value: $root.IdEmpresa, visible: false"></label>
+        <div class="input-group">
+            
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Cnpj, new { @class = "form-signin", data_bind = "value: $root.Cnpj", placeholder = "CNPJ" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Cnpj, null, new { @class = "text-danger" })
+                </div>
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Nome, new { @class = "form-signin", data_bind = "value: $root.Nome", placeholder = "Nome" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Nome, null, new { @class = "text-danger" })
+                </div>
+            
+        </div>
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg" data-bind="click: $root.add">Salvar</button>
+                    <button class="btn btn-default btn-lg" data-bind="click: $root.cancel">Cancelar</button>
+                </div>
+                <br />
+    </fieldset>
+    }
+    <br />
+    <br />
+</div>
+<div class="container">
+    <h3>
+        Empresas cadastradas
+        <button class="btn btn-lg btn-primary pull-right">OK</button>
+        <input type="text" id="pesq" name="pesq" class="input-lg form-signin pull-right" data-bind="click: $root.get" placeholder="Pesquisar">
+    </h3>
+    <hr />
+    <table class="table table-striped" data-bind="visible: empresas().length > 0">
+        <thead>
+            <tr>
+                <td class="text-info">Nome</td>
+                <td class="text-info">CNPJ</td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: empresas">
+            <tr>
+                <td data-bind="text: Nome"></td>
+                <td data-bind="text: Cnpj"></td>
+                <td>
+                    <button class="btn btn-success" data-bind="click: $root.edit">Alterar</button>&nbsp;
+                    <button class="btn btn-danger" data-bind="click: $root.remove">Desativar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@section UsuarioScript {
+    @Scripts.Render("~/empresaViewModel")
+}
+
+

@@ -1,0 +1,97 @@
+﻿@model BichoFelizMVC.Models.RegistrarUsuarioViewModel
+
+@{
+    ViewBag.Title = "Registrar usuário";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+    <fieldset class="form-signin">
+        <h3>Registrar usuário</h3>
+        <hr />
+        <div class="input-group">
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.NomeContato, new { @class = "form-signin", data_bind = "value: $root.NomeContato", placeholder = "Nome" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.NomeContato, null, new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(m => m.Cpf, new { @class = "form-signin", data_bind = "value: $root.Cpf", placeholder = "CPF" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Cpf, null, new { @class = "text-danger" })
+                </div>
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Endereco, new { @class = "form-signin", data_bind = "value: $root.Endereco", placeholder = "Endereço" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Endereco, null, new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(m => m.Bairro, new { @class = "form-signin", data_bind = "value: $root.Bairro", placeholder = "Bairro" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Bairro, null, new { @class = "text-danger" })
+                </div>
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Cidade, new { @class = "form-signin", data_bind = "value: $root.Cidade", placeholder = "Cidade" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Cidade, null, new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(m => m.Estado, new { @class = "form-signin", data_bind = "value: $root.Estado", placeholder = "Estado" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Estado, null, new { @class = "text-danger" })
+                </div>
+                <hr />
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-signin", data_bind = "value: $root.Email", placeholder = "Email" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+
+                    <select data-bind="options: empresas, optionsText: 'Nome', value: $root.Emp, optionsValue: 'IdEmpresa'" class="btn btn-default dropdown-toggle"></select>
+                    <input type="hidden" data-bind="text: Emp"/>
+                    <br />
+                </div>
+                <div class="input-group">
+                    @Html.PasswordFor(m => m.Senha, new { @class = "form-signin", data_bind = "value: $root.Senha", placeholder = "Senha" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.Senha, null, new { @class = "text-danger" })
+
+                    @Html.PasswordFor(m => m.ConfirmarSenha, new { @class = "form-signin", data_bind = "value: $root.ConfirmarSenha", placeholder = "Confirma senha" })
+                    &nbsp;@Html.ValidationMessageFor(m => m.ConfirmarSenha, null, new { @class = "text-danger" })
+                </div>
+        </div>
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg" data-bind="click: $root.add">Salvar</button>
+                    <button class="btn btn-default btn-lg" data-bind="click: $root.cancel">Cancelar</button>
+                </div>
+                <br />
+    </fieldset>
+    }
+    <br />
+    <br />
+</div>
+<div class="container">
+    <h3>
+        Usuários cadastrados
+        <button class="btn btn-lg btn-primary pull-right">OK</button>
+        <input type="text" class="input-lg form-signin pull-right" placeholder="Pesquisar">
+    </h3>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Nome</td>
+                <td class="text-info">CPF</td>
+                <td class="text-info">Email</td>
+                <td class="text-info">Cidade</td>
+                
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: usuarios">
+            <tr>
+                <td data-bind="text: NomeContato"></td>
+                <td data-bind="text: Cpf"></td>
+                <td data-bind="text: Email"></td>
+                <td data-bind="text: Cidade"></td>
+                <td>
+                    <button class="btn btn-success" data-bind="click: $root.edit">Alterar</button>&nbsp;
+                    <button class="btn btn-danger" data-bind="click: $root.remove">Desativar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section UsuarioScript {
+    @Scripts.Render("~/usuarioViewModel")
+}

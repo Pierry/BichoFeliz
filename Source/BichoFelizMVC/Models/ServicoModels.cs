@@ -1,13 +1,30 @@
 ﻿using System;
 
-namespace BichoFelizMVC.Models {
-  public class ServicoModels {
-    public int IdServico { get; set; }
-    public DateTime? DataHora { get; set; }
-    public int? Periodo { get; set; }
-    public int? Situacao { get; set; }
-    public TipoServicoModels TipoServico { get; set; }
-    public ContatoModels Contato { get; set; }
-    public AnimalModels Animal { get; set; }
-  }
+namespace BichoFelizMVC.Models
+{
+    public class ServicoModels
+    {
+        public int IdServico { get; set; }
+        public int IdTipoServico { get; set; }
+        public int IdContato { get; set; }
+        public string CPF { get; set; }
+        public int IdAnimal { get; set; }
+        public string DataHora { get; set; }
+        public string Periodo { get; set; }
+        public int Status { get; set; }
+    }
+
+    public class ServicoAnimalModel
+    {
+        public int IdServico { get; set; }
+        public int IdTipoServico { get; set; }
+        public int IdContato { get; set; }
+        public int IdAnimal { get; set; }
+        public string Tipo { get; set; }
+        public string NomeContato { get; set; }
+        public string Animal { get; set; }
+        public string DataHora { get; set; }
+        public string Periodo { get; set; }
+        public int? Status { get; set; }
+    }
 }

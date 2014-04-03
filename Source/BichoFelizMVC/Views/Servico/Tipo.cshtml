@@ -1,0 +1,62 @@
+﻿@model BichoFelizMVC.Models.TipoServicoModels
+
+@{
+    ViewBag.Title = "Bicho Feliz - Tipos de serviços";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+<input type="hidden" name="idcontato" id="idcontato" value="@TempData["idcontato"]">
+<input type="hidden" name="idempresa" id="idempresa" value="@TempData["idempresa"]">
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset class="form-signin">
+            <h3>Adicionar tipo de serviço </h3>
+            <hr />
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-signin", data_bind = "value: $root.Nome", placeholder = "Nome serviço" })
+                &nbsp;@Html.ValidationMessageFor(m => m.Nome, null, new { @class = "text-danger" })
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg" data-bind="click: $root.add">Salvar</button>
+                <button class="btn btn-default btn-lg" data-bind="click: $root.cancel">Cancelar</button>
+            </div>
+            <br />
+        </fieldset>
+    }
+    <br />
+    <br />
+</div>
+<div class="container">
+    <h3>
+        Tipos de serviços cadastrados
+        <button class="btn btn-primary pull-right">OK</button>
+        <input type="text" class="input-sm pull-right" placeholder="Pesquisar">
+    </h3>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Tipo</td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: tipos">
+            <tr>
+                <td data-bind="text: Nome"></td>
+                <td>
+                    <button class="btn btn-success" data-bind="click: $root.edit">Alterar</button>&nbsp;
+                    <button class="btn btn-danger" data-bind="click: $root.remove">Desativar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section TipoServicoScript {
+    @Scripts.Render("~/tipoServicoViewModel")
+}
+
+
+
+

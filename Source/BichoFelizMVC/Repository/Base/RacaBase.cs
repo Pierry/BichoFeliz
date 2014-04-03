@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using BichoFelizMVC.Controllers.Repository.Interfaces;
 using BichoFelizMVC.Models;
 
-namespace BichoFelizMVC.Repository.Base
+namespace BichoFelizMVC.Controllers.Repository.Base
 {
     public abstract class RacaBase : ICrud<RacaModels>
     {
@@ -9,9 +10,9 @@ namespace BichoFelizMVC.Repository.Base
 
         public abstract IEnumerable<RacaModels> Get();
         public abstract RacaModels Get(int id);
-        public abstract bool Add(RacaModels item);
+        public abstract RacaModels Add(RacaModels item);
         public abstract bool Update(RacaModels item);
-        public abstract bool Delete(int id);
+        public abstract bool Remove(int id);
 
         #endregion
     }

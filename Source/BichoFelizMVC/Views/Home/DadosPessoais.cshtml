@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Painel de contole";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+
+<div class="container">
+    <h2 class="h2">Painel de controle
+    </h2>
+    <br />
+    <button class="btn btn-lg btn-default">Alterar senha</button>
+    <button class="btn btn-lg btn-default">Alterar email</button>
+</div>
+<br />
+<br />
+@RenderPage("AlterarSenha.cshtml");
+<br />
+<br />
+@RenderPage("AlterarEmail.cshtml");
+

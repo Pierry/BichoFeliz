@@ -1,0 +1,56 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+<div class="container">
+    <h2 class="h2">Adicionar cliente</h2>
+    <hr />
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="input-group">
+                <input type="text" placeholder="Nome" class="input-lg" data-bind="value: $root.Nome" />&nbsp;
+            <input type="text" placeholder="CPF" class="input-lg" data-bind="value: $root.CPF" />
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Endereço" class="input-lg" data-bind="value: $root.Endereco"/>&nbsp;
+            <input type="text" placeholder="Bairro" class="input-lg" data-bind="value: $root.Bairro"/>
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" placeholder="Cidade" class="input-lg" data-bind="value: $root.Cidade"/>&nbsp;
+            </div>
+            <br />
+            <input type="button" class="btn btn-lg btn-primary" value="Salvar" data-bind="value: $root.add"/>
+            <input type="reset" class="btn btn-lg btn-default" value="Cancelar" /><br />
+        </fieldset>
+    </form>
+    <br />
+    <br />
+
+    <h2>Clientes cadastrados
+        <button class="btn btn-lg btn-default pull-right">OK</button>
+        <input type="text" class="input-lg pull-right" placeholder="Pesquisar">
+    </h2>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Cliente</td>
+                <td class="text-info">Cidade</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>João da Silva</td>
+                <td>Itajai</td>
+                <td>
+                    <button class="btn btn-default">Alterar</button>&nbsp;
+                    <button class="btn btn-danger">Desativar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

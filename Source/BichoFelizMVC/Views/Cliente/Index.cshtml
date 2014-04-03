@@ -1,0 +1,81 @@
+﻿@model BichoFelizMVC.Models.ContatoModels
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+<input type="hidden" name="idcontato" id="idcontato" value="@TempData["idcontato"]">
+<input type="hidden" name="idempresa" id="idempresa" value="@TempData["idempresa"]">
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset class="form-signin">
+            <h3>Adicionar cliente </h3>
+            <hr />
+            <div class="input-group">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.NomeContato, new { @class = "form-signin", data_bind = "value: $root.NomeContato", placeholder = "Nome" })
+                        &nbsp;@Html.ValidationMessageFor(m => m.NomeContato, null, new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(m => m.Cpf, new { @class = "form-signin", data_bind = "value: $root.Cpf", placeholder = "CPF" })
+                        &nbsp;@Html.ValidationMessageFor(m => m.Cpf, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.Endereco, new { @class = "form-signin", data_bind = "value: $root.Endereco", placeholder = "Endereço" })
+                        &nbsp;@Html.ValidationMessageFor(m => m.Endereco, null, new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(m => m.Bairro, new { @class = "form-signin", data_bind = "value: $root.Bairro", placeholder = "Bairro" })
+                        &nbsp;@Html.ValidationMessageFor(m => m.Bairro, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.Cidade, new { @class = "form-signin", data_bind = "value: $root.Cidade", placeholder = "Cidade" })
+                        &nbsp;@Html.ValidationMessageFor(m => m.Cidade, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg" data-bind="click: $root.add">Salvar</button>
+                <button class="btn btn-default btn-lg" data-bind="click: $root.cancel">Cancelar</button>
+            </div>
+        </fieldset>
+    }
+</div>
+<br />
+<br />
+</div>
+<div class="container">
+    <h3>
+        Clientes cadastrados
+        <button class="btn btn-lg btn-primary pull-right">OK</button>
+        <input type="text" id="pesq" name="pesq" class="input-lg form-signin pull-right" placeholder="Pesquisar" data-bind="click: $root.get">
+    </h3>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="text-info">Cliente</td>
+                <td class="text-info">Cidade</td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: clientes">
+            <tr>
+                <td data-bind="text: NomeContato"></td>
+                <td data-bind="text: Cidade"></td>
+                <td>
+                    <button class="btn btn-success" data-bind="click: $root.edit">Alterar</button>&nbsp;
+                    <button class="btn btn-danger" data-bind="click: $root.remove">Desativar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section ClienteScript {
+    @Scripts.Render("~/clienteViewModel")
+}
+
+
+
+
+
+

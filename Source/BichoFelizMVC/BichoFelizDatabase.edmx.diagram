@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="800cd313f1974dfba1d74ffac4b8018c" Name="Diagram1">
+        <EntityTypeShape EntityType="BichoFelizMVCModel.CONTATO" PointX="3.0042655630988375" PointY="20.582724208283576" Width="1.5" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.EMPRESA" PointX="10.974925992533064" PointY="20.027699941782142" Width="1.5" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.LOGACESSO" PointX="2.2326123966987304" PointY="4.9836914711555895" Width="1.5" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.RACA" PointX="11.074910474510357" PointY="6.5550069243437639" Width="1.5" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.TIPO" PointX="11.476658262068712" PointY="3.7711225169576346" Width="1.5" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.TIPOSERVICO" PointX="6.4955914721338042" PointY="10.557656352667909" Width="1.5" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.USUARIO" PointX="11.609300236967068" PointY="24.641040545255429" Width="1.5" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_CONTATO_REFERENCE_EMPRESA" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_USUARIO_REFERENCE_CONTATO" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_LOGACESS_REFERENCE_USUARIO" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_RACA_REFERENCE_TIPO" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.ANIMAL" PointX="13.75" PointY="12.875" Width="1.5" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_ANIMAL_REFERENCE_CONTATO" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_ANIMAL_REFERENCE_TIPO" />
+        <EntityTypeShape EntityType="BichoFelizMVCModel.SERVICO" PointX="16" PointY="16" Width="1.5" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_SERVICO_REFERENCE_ANIMAL" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_SERVICO_REFERENCE_CONTATO" />
+        <AssociationConnector Association="BichoFelizMVCModel.FK_SERVICO_REFERENCE_TIPOSERV" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
